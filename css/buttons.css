@@ -1,0 +1,17 @@
+button {
+  color: #ffffff;
+  background-color: #2f75bc;
+  padding: .5em .8em;
+  border-radius: 3px;
+  border: none;
+}
+button:hover {
+  background-color: #757475;
+}
+a {
+  color: white;
+}
+a:visited, a:hover {
+  color: white;
+}
+

@@ -1,0 +1,41 @@
+site_name: STINGAR Installation Guide
+use_directory_urls: false
+site_url: https://stingar-docs.cloud.duke.edu
+theme:
+    name: readthedocs
+    custom_dir: 'custom_theme/'
+docs_dir: docs
+plugins:
+  - search
+  - user-defined-values:
+      keywords:
+        STINGAR_HOSTNAME:
+          placeholder: Enter the name of your STINGAR server
+        STINGAR_ADMIN_USER:
+          placeholder: Enter the name of the user with root access on the STINGAR server
+        STINGAR_REGISTRY_USER:
+          placeholder: Enter the username provided by the STINGAR team that lets you download STINGAR from a registry.
+extra_css:
+    - css/buttons.css
+nav:
+  - 'STINGAR':
+      - 'Establish Prerequisites':
+          - 'Join STINGAR Community': requirements/membership.md
+          - 'Confirm Hardware Requirements': requirements/hardware.md
+          - 'Install Required Software': requirements/software.md
+          - 'Verify Software Installation': requirements/confirm.md
+      - 'Install STINGAR':
+          - 'Run Installation Script': install/run_quickstart.md
+          - 'Launch STINGAR': install/launch.md
+      - 'Prepare Honeypot Host Machine':
+          - 'Register Machine in STINGAR': prepare_hp_host/register_in_stingar.md
+          - 'Setup Host Machine': prepare_hp_host/setup_host.md
+      - 'Deploy a Honeypot':
+          - 'Launch STINGAR Deployment': deploy_hp/launch.md
+          - 'Generate Sample Attack Data': deploy_hp/gen_sample_attacks.md
+      - 'View Attack Information':
+          -  'Via STINGAR User Interface': attack_analysis/ui.md
+          -  'Via Kibana': attack_analysis/kibana.md
+          -  'Via STINGAR API': attack_analysis/api.md
+          -  'Via Elasticsearch': attack_analysis/es.md
+  - 'About the Configuration Files': config_files.md

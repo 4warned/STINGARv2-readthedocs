@@ -1,0 +1,118 @@
+---
+stages:
+  - precheck
+  - build
+  - test
+  - tag
+  - deploy
+  - docs
+  - pages
+  - cleanup
+
+variables:
+  # The PIPELINE_IMAGE is how we tag our build process with a unique identifier
+  PIPELINE_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:pipeline-${CI_PIPELINE_ID}
+  # If successful we tag the image with the commit SHA so it can be used for
+  # caching in the future
+  COMMIT_IMAGE: ${CI_REGISTRY}/${CI_PROJECT_PATH}:commit-${CI_COMMIT_SHA}
+  # The BRANCH_IMAGE is another extra tag used for caching
+  BRANCH_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:${CI_COMMIT_REF_NAME}
+  # A unique reference to this build used to find the k8s resources used in
+  # the OKD build strategy
+  K8S_OBJ_NAME: gitlab-ci-${CI_PROJECT_PATH_SLUG}-${CI_JOB_ID}
+  # Credentials for the gitlab CI registry
+  SKOPEO_REGCRED: ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD}
+  TOOLS_BRANCH: master
+
+  HELM_CHART_BRANCH: gitlab-ci
+
+  # The base URL for the k8s API
+  K8S_API_BASE: "https://manage.cloud.duke.edu:443"
+
+image:
+  # This is the container that will run in a pod and do the work in this yaml file.
+  # Specified at the top level like this, it will be the default.
+  name: gitlab-registry.oit.duke.edu/duke_openshift_users/community-supported-resources/build-helper:master
+
+build-prod:
+  stage: build
+  tags:
+    - "oit-shared"
+  only:
+    - master
+  environment:
+    name: prod
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ''
+  services:
+    - name: docker:18.09.7-dind
+  before_script:
+    # docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker login -p ${K8S_SERVICE_ACCOUNT_TOKEN} -u unused ${K8S_REGISTRY}
+    - docker pull ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}:latest || true
+  script:
+    - docker build -t ${PIPELINE_IMAGE} --pull
+      --build-arg CACHEBUST=$(date +%s)
+      --build-arg CI_PIPELINE_URL=${CI_PIPELINE_URL}
+      --build-arg CI_COMMIT_SHA=${CI_COMMIT_SHA}
+      --build-arg CI_COMMIT_REF_NAME=${CI_COMMIT_REF_NAME}
+      --build-arg CI_BUILD_TIME="`date -u +%F\ %R`"
+      --cache-from ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}:latest .
+
+    # docker push ${PIPELINE_IMAGE} # Pushing to Gitlab image registry
+    # Login to OKD registry
+    - docker login -p ${K8S_SERVICE_ACCOUNT_TOKEN} -u unused ${K8S_REGISTRY}
+    - docker rmi ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}:latest || true
+    # Tag image in OKD
+    - docker tag ${PIPELINE_IMAGE} ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}:latest
+    - docker tag ${PIPELINE_IMAGE} ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}:${CI_COMMIT_SHA}
+    # Push image to OKD
+    - docker push ${K8S_REGISTRY}/${K8S_NAMESPACE}/${PROJECT_NAME}-${CI_ENVIRONMENT_NAME}
+
+deploy-prod:
+  stage: deploy
+  tags:
+    - "oit-shared"
+  only:
+    - master
+  environment:
+    name: prod
+  variables:
+    # The values file for helm, will use a default if you do not have one in your repo.
+    VALUES_FILE: .helm-values.yaml
+    #MESSAGE_TEXT: "{\"text\": \"Hello World\"}"
+    MESSAGE_TEXT: "{\"text\": \"<a href='${CI_PROJECT_URL}'><b>${CI_PROJECT_NAME}</b></a> is deployed in <a href='${CI_ENVIRONMENT_URL}'><b>${CI_ENVIRONMENT_NAME}</b></a> with commit <a href='${CI_PROJECT_URL}/-/commit/${CI_COMMIT_SHA}'><b>${CI_COMMIT_SHORT_SHA}</b></a> <br/> to <a href='${CI_PROJECT_URL}/commits/${CI_COMMIT_BRANCH}'><b>${CI_COMMIT_BRANCH}</b></a> branch and commited by <b>${GITLAB_USER_NAME}</b>\"}"
+    CONTENT: "Content-Type: application/json"
+    HELM_TIMEOUT: "2m"
+  before_script:
+    # This has to be in the before_script due to issues with variable substitution in gitlab-ci
+    - mkdir -p helm/manifests
+    - git clone --single-branch --branch ${HELM_CHART_BRANCH} ${CI_REPOSITORY_URL} clone-dir
+    - cp clone-dir/helm-chart/values.yaml ${VALUES_FILE}
+    # Gets access to the k8s API
+    - oc login ${K8S_API_BASE} --token=${K8S_SERVICE_ACCOUNT_TOKEN}
+    # Ensures we are using the correct namespace
+    - oc project ${K8S_NAMESPACE}
+  script:
+    # echoing command below which runs helm chart
+    - "echo helm3 upgrade --install --wait --timeout ${HELM_TIMEOUT} ${PROJECT_NAME}-${CI_ENVIRONMENT_NAME} clone-dir/helm-chart \
+      --set application.name=${PROJECT_NAME}-${CI_ENVIRONMENT_NAME},\
+          application.project=${K8S_NAMESPACE},\
+          route.url=${CI_ENVIRONMENT_URL#*://}"
+
+    # Actually apply the change to the k8s cluster
+    - "helm3 upgrade --install --wait --timeout ${HELM_TIMEOUT} ${PROJECT_NAME}-${CI_ENVIRONMENT_NAME} clone-dir/helm-chart \
+      --set application.name=${PROJECT_NAME}-${CI_ENVIRONMENT_NAME},\
+            application.project=${K8S_NAMESPACE},\
+            route.url=${CI_ENVIRONMENT_URL#*://}"
+
+    # send to MS-teams
+    - curl -H "${CONTENT}" -d "${MESSAGE_TEXT}" ${MS_TEAMS_CONNECTOR_HOOK}
+  artifacts:
+    when: on_failure
+    expire_in: 1 day
+    paths:
+      - helm
+      - ${VALUES_FILE}
