@@ -18,7 +18,7 @@ plugins:
 extra_css:
     - css/buttons.css
 nav:
-  - 'STINGAR':
+  - 'STINGAR': 
       - 'Establish Prerequisites':
           - 'Join STINGAR Community': requirements/membership.md
           - 'Confirm Hardware Requirements': requirements/hardware.md
@@ -27,7 +27,7 @@ nav:
       - 'Install STINGAR':
           - 'Run Installation Script': install/run_quickstart.md
           - 'Launch STINGAR': install/launch.md
-      - 'Prepare Honeypot Host Machine':
+      - 'Prepare Honeypot Host Machine': 
           - 'Register Machine in STINGAR': prepare_hp_host/register_in_stingar.md
           - 'Setup Host Machine': prepare_hp_host/setup_host.md
       - 'Deploy a Honeypot':
