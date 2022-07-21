@@ -19,6 +19,7 @@ extra_css:
     - css/buttons.css
 nav:
   - 'STINGAR': 
+      - 'Installation Guide': index.md
       - 'Establish Prerequisites':
           - 'Join STINGAR Community': requirements/membership.md
           - 'Confirm Hardware Requirements': requirements/hardware.md

@@ -15,7 +15,7 @@ You may customize the appearance of your STINGAR UI by changing the color theme 
 
 | Env Var Name | Value | Description |
 | ------------ | ------------- | ------------ |
-| THEME_DARK_BASE_COLOR | #363636 | You may customize your STINGAR UI appearance by specifying the dark color.|
+| THEME_DARK_BASE_COLOR | 363636 | You may customize your STINGAR UI appearance by specifying the dark color.|
 | THEME_LIGHT_BASE_COLOR | white | You may customize your STINGAR UI appearance by specifying the light color.|
 | DEFAULT_ROWS_PER_PAGE | 1000 | Defines the default number of rows that will appear on the attach analysis page.|
 | INSTITUTION_NAME | XYZ University | The name of your organization.  This will appear in the heading on each page of the UI. |
