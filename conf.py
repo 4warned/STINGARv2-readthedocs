@@ -4,7 +4,7 @@ formats:
   - pdf
 
 python:
-  version: "3.9"
+  version: "3.7"
   install:
     - requirements: docs/requirements.txt
     - method: pip
