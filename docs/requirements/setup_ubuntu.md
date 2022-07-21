@@ -1,7 +1,7 @@
 STINGAR System - Ubuntu Installation
 ===============
 
-This page describes how to install software that STINGAR needs to run on an Ubuntu server. If possible, upgrade to Ubuntu 18.04 or higher. (We tested STINGAR installations on Ubuntu v16 and ran into a number of issues related to software dependencies with incompatible versions.)
+This page describes how to install software that STINGAR needs to run on an Ubuntu server. If possible, upgrade to Ubuntu 20.04 or higher. (We tested STINGAR installations on earlier Ubuntu versions and ran into a number of issues related to software dependencies with incompatible versions.)
 
 #Install Docker & Python
 

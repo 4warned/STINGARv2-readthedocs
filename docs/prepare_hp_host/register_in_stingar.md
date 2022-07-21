@@ -1,9 +1,9 @@
 Prepare Honeypot Host Machine
 =================
 
-<h3>You must have root access on an ubuntu 18.04 server to host a honeypot.</h3>
+<h3>You must have root access on an ubuntu 20.04 (or later) server to host a honeypot.</h3>
 
-Currently, honeypots can only be hosted on <b>ubuntu 18.04</b>; one honeypot per server. You need the following info:
+Currently, honeypots can only be hosted on <b>ubuntu 20.04 or later</b>; one honeypot per server. You need the following info:
 
 *  The IP address or domain name of the machine that will host the honeypot.
 *  The username with root access that is used to access this machine.
