@@ -1,4 +1,4 @@
-site_name: STINGAR Installation Guide
+site_name: 'STINGAR Installation Guide'
 use_directory_urls: false
 site_url: https://stingarv2.readthedocs.io
 theme:
