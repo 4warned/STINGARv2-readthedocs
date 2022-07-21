@@ -1,6 +1,6 @@
 site_name: STINGAR Installation Guide
 use_directory_urls: false
-site_url: https://stingar.readthedocs.io
+site_url: https://stingarv2.readthedocs.io
 theme:
     name: readthedocs
     custom_dir: 'custom_theme/'
