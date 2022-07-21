@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://stingarv2.readthedocs.io/requirements/setup_macos.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Setup macos - STINGAR Installation Guide</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../css/buttons.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup macos";
+        var mkdocs_page_input_path = "requirements/setup_macos.md";
+        var mkdocs_page_url = "/requirements/setup_macos.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> STINGAR Installation Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">STINGAR</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../index.html">Installation Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Establish Prerequisites</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="membership.html">Join STINGAR Community</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="hardware.html">Confirm Hardware Requirements</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="software.html">Install Required Software</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="confirm.html">Verify Software Installation</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Install STINGAR</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../install/run_quickstart.html">Run Installation Script</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../install/launch.html">Launch STINGAR</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Prepare Honeypot Host Machine</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../prepare_hp_host/register_in_stingar.html">Register Machine in STINGAR</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../prepare_hp_host/setup_host.html">Setup Host Machine</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Deploy a Honeypot</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../deploy_hp/launch.html">Launch STINGAR Deployment</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../deploy_hp/gen_sample_attacks.html">Generate Sample Attack Data</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">View Attack Information</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../attack_analysis/ui.html">Via STINGAR User Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../attack_analysis/kibana.html">Via Kibana</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../attack_analysis/api.html">Via STINGAR API</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../attack_analysis/es.html">Via Elasticsearch</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../config_files.html">About the Configuration Files</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">STINGAR Installation Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Setup macos</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="stingar-system-macos-installation">STINGAR System - MacOS Installation</h1>
+<p>This page describes how to install software that STINGAR needs to run on a MacOS server. The server must be at MacOS Mojave 10.14.6 or higher and you must login as a user with root privilege. Because Docker is a system-level package, you cannot install it using brew install. You must use cask instead.</p>
+<h1 id="install-docker-python">Install Docker &amp; Python</h1>
+<p>Log onto the MacOS server as the STINGAR user (with root privs); then install &amp; launch the software required to setup &amp; run STINGAR.</p>
+<p><code>brew update
+brew cask install docker docker-compose python3 pass</code>
+Launch Docker by entering [Cmd][Space] and typing the word 'Docker' in the prompt.</p>
+<p><img alt="mac-docker1" src="../img/mac_docker2.png" /></p>
+<p>Click [OK] and enter the root password to proceed. When Docker starts installing, a whale icon will appear in the top bar on the right. Click it to see the current status of Docker.  When you see 'Docker Desktop is running" you're ready to move forward!</p>
+<p><img alt="mac-docker2" src="../img/mac_docker1.png" /></p>
+<style>
+button {
+  color: #ffffff;
+  background-color: #2f75bc;
+  padding: .5em .8em;
+  border-radius: 3px;
+  border: none;
+}
+button:hover {
+  background-color: #757475;
+}
+a {
+  color: white;
+}
+a:visited, a:hover {
+  color: white;
+}
+</style>
+
+<p><button style="margin-top:3em;float:right;"><a href="confirm.html">Proceed to Next Step</a></button></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
