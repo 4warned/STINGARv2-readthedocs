@@ -15,4 +15,5 @@ python:
       path: package
   system-packages: true
 
-jinja2==3.0.3
+jinja2:
+  version: "3.0.3"
