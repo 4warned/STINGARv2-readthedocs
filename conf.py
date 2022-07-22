@@ -8,7 +8,9 @@ python:
       path: .
       extra_requirements:
         - docs
-    - method: setuptools
-      path: package
+	- distlib 
+	- pipenv
+    #- method: setuptools
+    #  path: package
   system-packages: true
 
