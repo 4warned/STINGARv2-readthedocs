@@ -1,4 +1,4 @@
-version: 3
+version: 2
 
 formats:
   - pdf
@@ -6,7 +6,7 @@ formats:
 python:
   version: "3.7"
   install:
-    - requirements: docs/requirements.txt
+    - requirements: ./requirements.txt
     - method: pip
       path: .
       extra_requirements:
