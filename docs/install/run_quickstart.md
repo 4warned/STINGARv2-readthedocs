@@ -25,7 +25,7 @@ The STINGAR QuickStart script is available in Duke's public gitlab repository. T
 
 <div style="border:solid #e1e4e5 1px;background-color:#f8f8f8;padding:1em 1.2em;border-radius:3px;font-size:12px;font-family:monospace;color:#333;overflow:auto;white-space: nowrap;">
   <div style="display:block;margin:.5em 0;">git clone https://github.com/4warned/stingar-quickstart.git stingar</div> or
-  <div style="display:block;margin:.5em 0;">git clone https://gitlab.oit.duke.edu/stingar2-public/stingar-quickstart stingar</div>
+  <div style="display:block;margin:.5em 0;">git clone https://github.com/4warned/stingar-quickstart.git stingar</div>
   <div style="display:block;margin:.5em 0;">cd stingar</div>
 </div>
 
