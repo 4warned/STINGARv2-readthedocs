@@ -22,6 +22,13 @@ in the same directory as your mkdocs.yml file. This will spin up a local web ser
 
 Once you’re happy with the content and layout, commit and push to your repo.
 
+Reminder - for automatic deploy add tag "latest" to main
+
+```
+% git tag -f latest
+% git push -f --tags
+```
+
 Then, make a pull request back to the main repo, and request a review (or wait till someone notices).
 Once changes have been accepted to master, they will automatically build in a PRIVATE version of the docs on the readthedocs.io site.
 
