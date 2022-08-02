@@ -53,7 +53,6 @@ This file is divided into the following sections.
 | FLUENTD_KEY | random-string | Secret key provided with each transaction to prove a request is authorized |
 | FLUENTD_APP | stingar |
 
-
 <h5>Fluent Bit ENV variables</h5>
 | Env Var Name | Value | Description |
 | ------------ | ------------- | ------------ |
@@ -61,6 +60,19 @@ This file is divided into the following sections.
 | FLUENTBIT_PORT | 24284  | Content Cell |
 | FLUENTBIT_APP | stingar | |
 | FLUENTD_HOSTNAME | flb.local | |
+
+<h5>Syslog ENV variables</h5>
+
+[Syslog](https://en.wikipedia.org/wiki/Syslog) is an optional logging service provided by Stingar to allow logging of honeypot indicator data to a remote Syslog server. 
+
+| Env Var Name | Value | Description |
+| ------------ | ------------- | ------------ |
+| SYSLOG_ENABLED | false | Set to true to enable Syslog service |
+| SYSLOG_HOST |   | The hostname of your organization's Syslog server |
+| SYSLOG_PORT | 514 | Default Port number for Syslog |
+| SYSLOG_SEVERITY | info | Default severity tag for all Syslog messages |
+| SYSLOG_HOSTNAME | localhost | Default name of Stingar server hostname | 
+| SYSLOG_PROTOCOL | udp | Default protocol used to pass Syslog messages ['tcp' also supported] |
 
 <h5>CIF ENV variables</h5>
 | Env Var Name | Value | Description |

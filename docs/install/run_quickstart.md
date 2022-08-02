@@ -90,21 +90,35 @@ A sample script session is shown below (Input values for a default configuration
     Enter the URL where your STINGAR web app will be available. The domain must be resolvable. E.g.: sub.domain.tld or localhost/stingar.
     Domain: </span><span class="userInput">STINGAR_HOSTNAME</span>
 
+  <br>
   <span class="quickStartOutput">Please enter your SSL certificate path. [./certs]:</span><span class="userInput">[Return]</span>
 
+  <br>
   <span class="quickStartOutput">Do you wish to specify an alternate Docker registry? (y/n): [y]</span><span class="userInput">[Return]</span>
 
+  <br>
   <span class="quickStartOutput">Please enter the URL for the Docker registry: [stingarregistry.azurecr.io]</span><span class="userInput">[Return]</span>
 
+  <br>
   <span class="quickStartOutput">Please enter your Docker registry username:</span><span class="userInput">STINGAR_REGISTRY_USER</span>
 
+  <br>
   <span class="quickStartOutput">Please enter your Docker registry password:</span><span class="userInput">Enter the registry password that was provided to you by the STINGAR team</span> (Note: The password will not display.)
 
+  <br>
   <div class="quickStartOutput">Testing registry authentication...</div>
   <div class="quickStartOutput">WARNING! Using --password via the CLI is insecure. Use --password-stdin.</div>
   <div class="quickStartOutput">Login Succeeded</div>
   <div class="quickStartOutput" style="color:green;">Authentication to stingarregistry.azurecr.io succeeded.</div>
 
+  <br>
+  <span class="quickStartOutput">Do you wish to enable Syslog logging to a remote Syslog server? (y/n): [n] </span><span class="userInput">[Return]</span>
+  <div class="quickStartOutput">If you have a Syslog server you wish indicators (IP, hash, url) from your honeypots to be logged to, answer y to this question.</div>
+  <b>If you answer y to this question, you will be presented with the follow-up question:</b>
+  <div class="quickStartOutput">Please enter the URL for the remote Syslog server:</div>
+  <br>
+ 
+ 
   <span class="quickStartOutput">Do you wish to enable logging to a remote CIFv3 server? (y/n): [n] </span><span class="userInput">[Return]</span>
 
   <div class="quickStartOutput"><b>If you don't know what a CIF server is, or don't have one available, answer n or hit enter.</b></div>

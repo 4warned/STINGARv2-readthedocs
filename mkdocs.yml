@@ -18,7 +18,7 @@ plugins:
 extra_css:
     - css/buttons.css
 nav:
-  - 'STINGAR': 
+  - 'STINGAR v2': 
       - 'Installation Guide': index.md
       - 'Establish Prerequisites':
           - 'Join STINGAR Community': requirements/membership.md
