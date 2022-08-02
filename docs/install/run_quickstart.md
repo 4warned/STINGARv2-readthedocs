@@ -118,7 +118,6 @@ A sample script session is shown below (Input values for a default configuration
   <div class="quickStartOutput">Please enter the URL for the remote Syslog server:</div>
   <br>
  
- 
   <span class="quickStartOutput">Do you wish to enable logging to a remote CIFv3 server? (y/n): [n] </span><span class="userInput">[Return]</span>
 
   <div class="quickStartOutput"><b>If you don't know what a CIF server is, or don't have one available, answer n or hit enter.</b></div>
