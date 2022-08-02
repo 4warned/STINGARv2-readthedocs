@@ -74,6 +74,15 @@ This file is divided into the following sections.
 | SYSLOG_HOSTNAME | localhost | Default name of Stingar server hostname | 
 | SYSLOG_PROTOCOL | udp | Default protocol used to pass Syslog messages ['tcp' also supported] |
 
+<h5>Local File logging settings</h5>
+
+Stingar can be configured to export all honeypot indicator data to a local file stored on the local server. The default file location is defined in the Docker-compose.yml file under the FluentD volume definition as <code>- ./stingar-logs:/var/log/stingar</code>. Note, this service is disabled by default. To enable, edit the <code>stingar.env</code> file and change the FILE_ENABLED value to 'true'.
+
+| Env Var Name | Value | Description |
+| ------------ | ------------- | ------------ |
+| FILE_ENABLED | false | Set to true to enable local file logging service |
+
+
 <h5>CIF ENV variables</h5>
 | Env Var Name | Value | Description |
 | ------------ | ------------- | ------------ |
