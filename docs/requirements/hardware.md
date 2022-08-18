@@ -10,6 +10,7 @@ One server hosts the STINGAR application which coordinates all STINGAR client ac
 * 2 CPUs, 2 GB RAM, 20 GB Disk
 * Linux or MacOS operating system (ubuntu is recommended)
 * internet connectivity
+* Network Port #24224 open for communication from Honeypots 
 
 STINGAR is installed on this 'admin server'; the installation process will prompt you for the domain name/ip address.
 
