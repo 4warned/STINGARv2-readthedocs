@@ -28,6 +28,7 @@ nav:
       - 'Install STINGAR':
           - 'Run Installation Script': install/run_quickstart.md
           - 'Launch STINGAR': install/launch.md
+          - 'Alternative Installation Methods': install/faq.md
       - 'Prepare Honeypot Host Machine': 
           - 'Register Machine in STINGAR': prepare_hp_host/register_in_stingar.md
           - 'Setup Host Machine': prepare_hp_host/setup_host.md
