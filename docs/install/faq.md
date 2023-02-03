@@ -8,9 +8,9 @@ If your system requirements differ from our recommended approach (i.e. Ubuntu/Ce
 
 <h4>Podman / podman-compose</h4>
 
-Podman is an alternative to Docker which doesn't require sudo access to your host. It does, however, limit the port mappings of your host to >1024. Hence you will need to point your browser at a specific port number (above 1024) to access the STINGAR web dashboard. 
+Podman is an alternative to Docker which doesn't require sudo access to your host. It does, however, limit the port mappings of your host to >1024. Hence you will need to point your browser at a specific port number (above 1024) to access the STINGAR web dashboard.  
 
-In this example we will use port <b>8443</b> instead of the default <b>443</b>:
+In this wallkthrough example we will use port <b>8443</b> instead of the default <b>443</b>: (ensure your firewall settings allow inbound traffic from ports 8443, 8080, 24224.
 
 <b>STEP 1)</b> You will need to edit your <code>nginx.conf</code> file to update the listen ports and port mapping settings :
 
@@ -60,8 +60,11 @@ and change line ~62 of <code>stingar.env</code> to :
 ```sh
 STINGAR_SERVICE_URL=http://stingarapi.dns.podman:8000/api/v2
 ```
+<font COLOR="RED">
+<b>NOTE: ensure there are no trailing spaces on these two lines</b>
+</font>
 
-modify & re-save the file
+modify & re-save the file - 
 
 <b>STEP 4)</b> then start the current enviroment
 ```sh
