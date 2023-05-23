@@ -61,7 +61,7 @@ You should find these 2 files in that directory:
 
 At this point you should have docker, docker-compose & python3 installed on this server and the QuickStart script (file: configure_stingar.py) downloaded to the current directory.
 
-You will need the password provided by the STINGAR team to retrieve STINGAR from the registry where the code resides. Contact the STINGAR team (<team-stingar@duke.edu>) if you don't have a STINGAR Registry account or do not know your username/password for it.
+You will need the password provided by the STINGAR team to retrieve STINGAR from the registry where the code resides. Contact the STINGAR team (<info@forewarned.io>) if you don't have a STINGAR Registry account or do not know your username/password for it.
 
 Now it's just a matter of running the script and responding to the prompts:
 
