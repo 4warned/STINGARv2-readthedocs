@@ -1,7 +1,7 @@
 STINGAR System - MacOS Installation
 ===============
 
-This page describes how to install software that STINGAR needs to run on a MacOS server. The server must be at MacOS Mojave 10.14.6 or higher and you must login as a user with root privilege. Because Docker is a system-level package, you cannot install it using brew install. You must use cask instead.
+This page describes how to install software that STINGAR needs to run on a MacOS server. The server must be at MacOS Mojave 10.14.6 or higher and you must login as a user with root privilege. Because Docker is a system-level package, you cannot install it using brew install. 
 
 #Install Docker & Python
 
@@ -9,7 +9,7 @@ Log onto the MacOS server as the STINGAR user (with root privs); then install & 
 
 ```
 brew update
-brew cask install docker docker-compose python3 pass ```
+brew install docker docker-compose python3 pass ```
 Launch Docker by entering [Cmd][Space] and typing the word 'Docker' in the prompt.
 
 ![mac-docker1](../img/mac_docker2.png)

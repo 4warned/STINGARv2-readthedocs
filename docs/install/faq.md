@@ -1,6 +1,6 @@
 # Alternative STINGAR Installation Methods
 
-If your system requirements differ from our recommended approach (i.e. Ubuntu/CentOS/RHEL with docker / docker-compose) there are alternative technologies that will also allow you to install STINGAR but require some 'manual' editing of the 3 configuration files created by the quickstart script: 
+If your system requirements differ from our recommended approach (i.e. Ubuntu/CentOS/RHEL with docker / docker-compose) there are alternative technologies that will also allow you to install STINGAR but require some manual editing of the 3 configuration files created by the quickstart script: 
 <code>stingar.env</code>
 <code>nginx.conf</code>
 <code>docker-compose.yml</code>

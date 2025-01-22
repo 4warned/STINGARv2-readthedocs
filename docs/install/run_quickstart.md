@@ -56,6 +56,9 @@ You should find these 2 files in that directory:
 * cert.pem
 * key.pem
 
+## To install permanent certificates
+ 
+See more details <a>https://communityhoneynetwork.readthedocs.io/en/stable/certificates/</a>
 
 # Run the QuickStart Script
 
@@ -128,12 +131,12 @@ A sample script session is shown below (Input values for a default configuration
 
   <div class="quickStartOutput"><b>Configuring for Collective Intelligence Framework (CIF)</b></div>
 
-  <div class="quickStartOutput">Please enter the URL for the remote CIFv3 server:</div>
-  <div class="quickStartOutput">Please enter the API token for the remote CIFv3 server:</div>
+  <div class="quickStartOutput">Please enter the URL for the remote CIF server:</div>
+  <div class="quickStartOutput">Please enter the API token for the remote CIF server:</div>
   <div class="quickStartOutput"> This token must have write privileges to the remote CIF instance.</div>
   <div class="quickStartOutput">Please enter a name you wish to be associated with your organization: </div>
 
-  <div class="quickStartOutput">For more information about CIFv3 and its configuration, please refer to our [CIF documentation](https://csirtgadgets.com/collective-intelligence-framework/).</div>
+  <div class="quickStartOutput">For more information about CIF and its configuration, please refer to our [CIF documentation](https://csirtgadgets.com/collective-intelligence-framework/).</div>
 </div>
 
 # QuickStart Script Results

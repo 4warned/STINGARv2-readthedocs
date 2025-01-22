@@ -33,5 +33,8 @@ a:visited, a:hover {
 <button>[Click here if installing on RHEL/Centos](../requirements/setup_centos.md)</button>
 
 
+<button>[Click here if installing on ORACLE](../requirements/setup_oracle.md)</button>
+
+
 <button>[Click here if installing on a Mac](../requirements/setup_macos.md)</button >
 

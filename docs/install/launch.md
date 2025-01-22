@@ -6,7 +6,7 @@ With STINGAR downloaded & configured (assuming you're logged on to the server as
 docker-compose up -d
 ```
 
-It can take up to 15 minutes to startup the first time. Monitor progress with this command:
+It can take up to 10 minutes to startup the first time. Monitor progress with this command:
 
 ```
 docker-compose logs -f stingarui
@@ -15,9 +15,15 @@ docker-compose logs -f stingarui
 STINGAR is ready when the log output stops scrolling & you see:
 
 <ul style="border:solid 1px;border-radius:3px;padding:.4em;">
-  <li style="list-style:none;">stingarui_1      | * Environment: production</li>
-  <li style="list-style:none;">stingarui_1      | * Listening on tcp://0.0.0.0:3000</li>
-  <li style="list-style:none;">stingarui_1      | Use Ctrl-C to stop</li>
+  <li style="list-style:none;">stingarui_1      | > stingar@2.1.0 start</li>
+  <li style="list-style:none;">stingarui_1      | > next start</li>
+  <li style="list-style:none;">stingarui_1      | </li>
+  <li style="list-style:none;">stingarui_1      |    ▲ Next.js 15.1.4</li>
+  <li style="list-style:none;">stingarui_1      |    - Local:        http://localhost:3000</li>
+  <li style="list-style:none;">stingarui_1      |    - Network:      http://172.20.0.3:3000</li>
+  <li style="list-style:none;">stingarui_1      | </li>
+  <li style="list-style:none;">stingarui_1      |  ✓ Starting...</li>
+  <li style="list-style:none;">stingarui_1      |  ✓ Ready in 646ms</li>
 </ul>
 
 <h4>Access STINGAR From a Browser</h4>
@@ -34,16 +40,13 @@ An example of the warning in Firefox:
 
 STINGAR provides an <b>'admin'</b> user which lets you login to the application. (This is not the same as the linux user you used to logon to the server.)</b> The first time you login, you'll need to set the password:
 
-![Set Admin Password](../img/first_time_login.png)
+![Set Admin Password](../img/login.png)
 
 Once the password is set, the STINGAR UI dashboard appears.
 
-![Landing Page](../img/landing_page.png)
+![Landing Page](../img/new_dashboard.png)
 
 Congrats! You have successfully installed STINGAR.
 
-<h4>Deploy a Honeypot</h4>
-
-Proceed to the next step to deploy a honeypot. You need another ubuntu server to host a honeypot. Ubuntu is currently the only operating system STINGAR supports for hosting honeypots. You cannot install honeypots on the same server used to host STINGAR.
-
+Proceed to the <b>User Guide</b> documentation contained within your STINGAR installation (see bottom left menu "User Guide" from on Dashboard) to take the next steps to deploying your honeypot network and connecting to the shared threat feed. 
 
