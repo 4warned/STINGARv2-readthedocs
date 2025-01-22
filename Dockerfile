@@ -2,6 +2,7 @@ FROM alpine:latest as builder
 
 RUN apk add --update py-pip && \
     pip install mkdocs && \
+    pip install mkdocs-user-defined-values && \
     mkdir /mkdocs
 
 WORKDIR /mkdocs
