@@ -20,16 +20,16 @@ listen [::]:8443 ssl ipv6only=on; # managed by Certbot
 listen 8443 ssl; # managed by Certbot
 ```
 <FONT COLOR="RED">
-and change line ~115 to:
+and change line ~106 to:
 </FONT>
 ```sh
 proxy_set_header  X-Forwarded-Host $host:$server_port; # append ':$server_port' to '$host' 
 ```
 
-<b>STEP 2)</b> edit the <code>docker-compose.yml</code> file to update the port mappings of the <b>web</b> container
+<b>STEP 2)</b> edit the <code>docker-compose.yml</code> file to update the port mappings and file permissions of the <b>web</b> container
 
 <font COLOR="RED">
-change lines ~86/87 of <code>docker-compose.yml</code> to :
+change lines ~74/75 of <code>docker-compose.yml</code> to :
 </font>
 ```sh
     82 	  web:
@@ -40,7 +40,7 @@ change lines ~86/87 of <code>docker-compose.yml</code> to :
     87	      - 8443:8443
     88	    volumes:
     89	      - ./certs:/etc/nginx/conf.d:z
-    90	      - ./stingar-nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    90	      - ./stingar-nginx/nginx.conf:/etc/nginx/nginx.conf:ro,Z
     91	    restart: on-failure
 ```
 
@@ -49,13 +49,13 @@ modify & re-save the file
 <b>STEP 3)</b> edit the <code>stingar.env</code> file to update these <b>2</b> environment variables:
 
 <font COLOR="RED">
-change line ~35 of <code>stingar.env</code> to :
+change line ~44 of <code>stingar.env</code> to :
 </font>
 ```sh
 API_HOST=http://stingarapi.dns.podman:8000/
 ```
 <font COLOR="RED">
-and change line ~62 of <code>stingar.env</code> to :
+and change line ~69 of <code>stingar.env</code> to :
 </font>
 ```sh
 STINGAR_SERVICE_URL=http://stingarapi.dns.podman:8000/api/v2

@@ -8,10 +8,11 @@ This page describes how to install software that STINGAR needs to run on a RHEL/
 Log onto the Centos server as the STINGAR administrative user (has root privs); then install & launch the software required to setup & run STINGAR.
 
 ```
-sudo yum update
-sudo yum install docker docker-compose gcc python3 pass -y
-sudo systemctl enable docker --now
-sudo systemctl start docker
+% sudo yum update
+% yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+% systemctl daemon-reload
+% systemctl enable docker
+% systemctl start docker
 ```
 
 #Setup Docker Group
