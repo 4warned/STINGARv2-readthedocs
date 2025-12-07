@@ -28,3 +28,4 @@ nav:
           - 'Launch STINGAR': install/launch.md
       - 'Alternative Installation Methods': install/faq.md
   - 'Customize STINGAR Configuration': config_files.md
+  - 'Upgrading STINGAR': upgrade.md

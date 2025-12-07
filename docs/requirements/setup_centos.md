@@ -3,7 +3,7 @@ STINGAR System - RHEL/Centos Installation
 
 This page describes how to install software that STINGAR needs to run on a RHEL/Centos server.
 
-#Install Docker & Python
+# Install Docker & Python
 
 Log onto the Centos server as the STINGAR administrative user (has root privs); then install & launch the software required to setup & run STINGAR.
 
@@ -15,8 +15,10 @@ Log onto the Centos server as the STINGAR administrative user (has root privs); 
 % systemctl start docker
 ```
 
-#Setup Docker Group
+# Setup Docker Group
+
 A system group named 'dockerroot' must include the STINGAR admin user (ie. the user you're currently logged in as). Create a group named 'dockerroot' and add the current user.
+
 ```
 sudo groupadd dockerroot
 sudo usermod -aG dockerroot ${USER}
@@ -25,6 +27,10 @@ sudo usermod -aG dockerroot ${USER}
 Note: Use the actual string: ${USER}. This automatically converts to the name of the user who runs the command.
 
 <div style="font-weight:bold">IMPORTANT: Before proceeding, you must logout & back in.</div>
+
+# Podman
+
+If you prefer to use Podman / podman-compose instead of Docker on your RHEL host please visit <button>[Podman installation](../install/faq.md)</button>
 
 <style>
 button {
@@ -46,4 +52,3 @@ a:visited, a:hover {
 </style>
 
 <button style="margin-top:3em;float:right;">[Proceed to Next Step](confirm.md)</button>
-
