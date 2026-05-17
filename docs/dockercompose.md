@@ -2,15 +2,15 @@
 
 The <code><b>docker-compose.yml</b></code> contains the docker container configuration details for the STINGARv2 system.
 
-This is the <code>docker-compose.yml</code> file for STINGARv2.2 system :
+This is the <code>docker-compose.yml</code> file for the most recent STINGARv2.3 version of the system :
 
-``` code
+```
 services:
   docs:
-    image: 4warned/stingar-user-docs:v2.2
+    image: 4warned/stingar-user-docs:v2.3
   elasticsearch:
     user: "1000"
-    image: 4warned/elasticsearch:v2.2
+    image: 4warned/elasticsearch:v2.3
     healthcheck:
       test: [ "CMD-SHELL", "curl -s http://localhost:9200/_cluster/health?wait_for_status=yellow || exit 1"]
       interval: 10s
@@ -25,11 +25,18 @@ services:
       - "127.0.0.1:9300:9300"
     environment:
       discovery.type: "single-node"
-      ES_JAVA_OPTS: "-Xmx1G -Xms1G" # modify this runtime memory allocation setting as appropriate (e.g. "-Xmx2G -Xms2G")
+      ES_JAVA_OPTS: "-Xmx1G -Xms1G" # modify this runtime memory allocation setting as appropriate (e.g. "-Xmx1G -Xms1G")
+      logger.level: WARN
+      bootstrap.memory_lock: "true"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: unless-stopped
   
   kibana:
     user: "1000"
-    image: 4warned/kibana:v2.2
+    image: 4warned/kibana:v2.3
     ports:
       - "127.0.0.1:5601:5601"
     depends_on:
@@ -40,7 +47,7 @@ services:
     image: redis:7.0.4
 
   fluentd:
-    image: 4warned/fluentd:v2.2
+    image: 4warned/fluentd:v2.3
     ports:
       - "24224:24224"
       - "24224:24224/udp"
@@ -52,31 +59,37 @@ services:
       elasticsearch:
         condition: service_healthy
     #volumes:
-      #  - ./stingar-logs:/var/log/stingar
-      #  - ./fluent.conf:/fluentd/etc/fluent.conf
+      #- ./stingar-logs:/var/log/stingar
+      #- ./fluent.conf:/fluentd/etc/fluent.conf
       
   stingarapi:
-    image: 4warned/stingar-api:v2.2
+    image: 4warned/stingar-api:v2.3
     env_file:
       - stingar.env
     volumes:
+    volumes:
       - ./storage/db:/srv/db:z
       - ./stingar.env:/app/stingar.env:rw
+      - ./docker-compose.yml:/app/docker-compose.yml:rw # mount docker-compose.yml to allow auto updates of images.
       - honeypot_templates:/opt/templates # new local volume for storing hp template files from HP Store
     depends_on:
       elasticsearch:
         condition: service_healthy
 
   stingarui:
-    image: 4warned/stingar-ui:v2.2
+    image: 4warned/stingar-ui:v2.3 
     env_file:
       - ./stingar.env
+    environment:
+      - API_HOST=http://stingarapi:8000
     volumes:
       - bundle:/bundle
       - node_module_cache:/stingar-ui/node_modules
-  
+    depends_on:
+      - stingarapi
+
   web:
-    image: nginx
+    image: nginx:latest
     container_name: nginx
     ports:
       - 80:80
@@ -88,7 +101,7 @@ services:
     restart: on-failure
 
   langstroth:
-    image: 4warned/langstroth:v2.2
+    image: 4warned/langstroth:v2.3
     env_file:
       - stingar.env
     depends_on:
@@ -99,5 +112,5 @@ volumes:
   node_module_cache:
   credentials:
   elastic_data:
-  honeypot_templates:    # a new local volume mounted on the vm drive for storing hp template files
+  honeypot_templates: 
 ```
