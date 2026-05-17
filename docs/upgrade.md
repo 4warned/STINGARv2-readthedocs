@@ -24,10 +24,10 @@ In order to update your STINGAR version you will need to complete the following 
 !!! warning "Risk of loss of honeypot data"
     The ```docker image prune``` command will not delete any of your persisted Honeypot details. However, there are other docker commands that could, please take care not to delete the docker <b>volumes</b> from your vm or you will lose your honeypot information and admin account password.
 <br>5) Replace the docker-compose.yml file with the latest version
-<br>```% mv docker-compose-2.2.yml docker-compose.yml```
+<br>```% mv docker-compose-2.3.yml docker-compose.yml```
 <br>6) Start the new version
 <br>```% docker-compose up -d```
 
 ### docker-compose.yml
 
-Here is example [docker-compose.yml](dockercompose.md) for our latest v2.2 release
+Here is example [docker-compose.yml](dockercompose.md) for our latest v2.3 release
