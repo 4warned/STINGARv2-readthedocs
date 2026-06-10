@@ -67,7 +67,6 @@ services:
     env_file:
       - stingar.env
     volumes:
-    volumes:
       - ./storage/db:/srv/db:z
       - ./stingar.env:/app/stingar.env:rw
       - ./docker-compose.yml:/app/docker-compose.yml:rw # mount docker-compose.yml to allow auto updates of images.
