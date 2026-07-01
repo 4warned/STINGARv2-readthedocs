@@ -1,36 +1,22 @@
 STINGAR System - RHEL/Centos Installation
 ===============
 
-This page describes how to install software that STINGAR needs to run on a RHEL/Centos server.
+**RedHat-family hosts (RHEL, Rocky Linux, AlmaLinux, Oracle Linux, CentOS Stream)** should follow the dedicated Podman guide:
 
-# Install Docker & Python
+<button>[RHEL / Rocky / AlmaLinux installation (recommended)](setup_rhel.md)</button>
 
-Log onto the Centos server as the STINGAR administrative user (has root privs); then install & launch the software required to setup & run STINGAR.
+The section below describes a legacy Docker-on-RHEL path. Prefer [setup_rhel.md](setup_rhel.md) and the quickstart `install_prerequisites.sh` script for v2.4 installs.
 
-```
-% sudo yum update
-% yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-% systemctl daemon-reload
-% systemctl enable docker
-% systemctl start docker
-```
+# Legacy: Install Docker manually on RHEL
 
-# Setup Docker Group
-
-A system group named 'dockerroot' must include the STINGAR admin user (ie. the user you're currently logged in as). Create a group named 'dockerroot' and add the current user.
+Log onto the server as the STINGAR administrative user; install Docker CE from [Docker's RHEL documentation](https://docs.docker.com/engine/install/rhel/), then:
 
 ```
-sudo groupadd dockerroot
-sudo usermod -aG dockerroot ${USER}
+sudo systemctl enable --now docker
+sudo usermod -aG docker ${USER}
 ```
 
-Note: Use the actual string: ${USER}. This automatically converts to the name of the user who runs the command.
-
-<div style="font-weight:bold">IMPORTANT: Before proceeding, you must logout & back in.</div>
-
-# Podman
-
-If you prefer to use Podman / podman-compose instead of Docker on your RHEL host please visit <button>[Podman installation](../install/faq.md)</button>
+Log out and back in, then verify with [Verify Software Installation](confirm.md).
 
 <style>
 button {

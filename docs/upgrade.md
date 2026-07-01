@@ -3,31 +3,29 @@ Upgrading STINGAR v2 Platform
 
 ## STINGARv2 Updates
 
-We provide updates to Version 2 of STINGAR as minor release versions (e.g. 2.1, 2.2, ...) to keep up to date with the latest OS builds and dependencies and fix any reported bugs or vulnerabilities.
+Forewarned provides updates as minor release versions (e.g. 2.3, 2.4, ...). See the [User Guide upgrading page](https://stingarv2-user.readthedocs.io/en/latest/upgrading.html) for in-app automated updates on Docker admin servers.
 
-### Update annoucements
+### Podman admin servers (RHEL)
 
-The STINGAR slack channel is the primary communications tool for all such minor version annoucements, along with our [News Page](https://forewarned.io/blog/) on our website and direct email notifications to the primary technical contact person at licensed institutions.
+In-app auto-update is not available on Podman installs in v2.4. From your quickstart directory:
 
-### Updating steps
+```
+./scripts/compose.sh pull
+./scripts/compose.sh up -d
+```
 
-These updates will be released as new docker images in the registry. The docker image tag labels will be updated for all docker images in the platform for any given minor release and a new docker-compose.yml file will be supplied referencing the new release version images.
+### Manual upgrade (all platforms)
 
-In order to update your STINGAR version you will need to complete the following steps:
 <br>1) Backup your STINGAR honeypot data
 <br>2) Stop your currently running STINGAR system
-<br>```% docker-compose down```
+<br>```./scripts/compose.sh down```
 <br>3) Backup your current STINGAR files
-<br>```% cp docker-compose.yml docker-compose_ORIG.yml``` <br>```% cp stingar.env stingar_ORIG.env```
-<br>4) Delete the existing docker images from the vm so they new images can be downloaded
-<br>```% docker image prune -a```
-!!! warning "Risk of loss of honeypot data"
-    The ```docker image prune``` command will not delete any of your persisted Honeypot details. However, there are other docker commands that could, please take care not to delete the docker <b>volumes</b> from your vm or you will lose your honeypot information and admin account password.
-<br>5) Replace the docker-compose.yml file with the latest version
-<br>```% mv docker-compose-2.3.yml docker-compose.yml```
+<br>```cp docker-compose.yml docker-compose_ORIG.yml```
+<br>```cp stingar.env stingar_ORIG.env```
+<br>4) Optionally remove cached images so new images are downloaded
+<br>```docker image prune -a``` or ```podman image prune -a```
+<br>5) Replace or update image tags in `docker-compose.yml` for the target release
 <br>6) Start the new version
-<br>```% docker-compose up -d```
+<br>```./scripts/compose.sh up -d```
 
-### docker-compose.yml
-
-Here is example [docker-compose.yml](dockercompose.md) for our latest v2.3 release
+See [docker-compose.yml reference](dockercompose.md) for the latest example.

@@ -1,33 +1,45 @@
 STINGAR System - Ubuntu Installation
 ===============
 
-This page describes how to install software that STINGAR needs to run on an Ubuntu server. If possible, upgrade to Ubuntu 20.04 or higher. (We tested STINGAR installations on earlier Ubuntu versions and ran into a number of issues related to software dependencies with incompatible versions.)
+This page describes how to install software that STINGAR needs on Ubuntu or Debian. Ubuntu 22.04 or 24.04 LTS is recommended.
 
-#Install Docker & Python
+# Recommended: quickstart install script
 
-Log onto the Ubuntu server as the STINGAR admin user (has root privs), then install and launch the software you need to setup and run run STINGAR. Once logged in, enter the following commands:
+After cloning the [STINGAR quickstart](https://github.com/4warned/stingar-quickstart) repository:
+
+```sh
+cd stingar
+sudo ./scripts/install_prerequisites.sh
+```
+
+This installs Docker CE, the Compose V2 plugin (`docker compose`), and Python 3.
+
+# Manual install (alternative)
 
 ```
 sudo apt update
 sudo apt upgrade -y
-sudo apt install docker docker-compose python3 gcc pass -y
-sudo systemctl enable docker --now
-sudo systemctl start docker
+sudo apt install ca-certificates curl gnupg python3 -y
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo systemctl enable --now docker
 ```
 
-#Setup Docker Group
-A system group named 'docker' must include the STINGAR user (ie. the user you're currently logged in as). Run the following commands to create a group named 'docker' & add yourself (the current user).
+# Docker group
+
+Add the STINGAR admin user to the `docker` group:
 
 ```
-sudo groupadd docker
+sudo groupadd docker 2>/dev/null || true
 sudo usermod -aG docker ${USER}
-sudo chown ${USER} /var/run/docker.sock
 ```
 
-Note: Use the actual string: ${USER}. This automatically converts to the name of the user who ran the command.
+<div style="font-weight:bold">IMPORTANT: Log out and back in before continuing.</div>
 
-
-<div style="font-weight:bold">IMPORTANT: Before proceeding, you must logout & back in.</div>
+Verify with [Verify Software Installation](confirm.md).
 
 <style>
 button {
@@ -49,4 +61,3 @@ a:visited, a:hover {
 </style>
 
 <button style="margin-top:3em;float:right;">[Proceed to Next Step](confirm.md)</button>
-

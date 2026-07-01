@@ -22,6 +22,7 @@ nav:
           - 'Join STINGAR Community': requirements/membership.md
           - 'Confirm Hardware Requirements': requirements/hardware.md
           - 'Install Required Software': requirements/software.md
+          - 'Container Runtime (Docker / Podman)': requirements/container_runtime.md
           - 'Verify Software Installation': requirements/confirm.md
       - 'Install STINGAR':
           - 'Run Installation Script': install/run_quickstart.md
