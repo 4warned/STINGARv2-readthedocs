@@ -16,7 +16,9 @@ This installs:
 
 * `podman` and `podman-docker`
 * Docker Compose V2 plugin at `/usr/local/lib/docker/cli-plugins/docker-compose` (invoked as **`podman compose`**)
-* Enables `podman.socket` for Docker API compatibility
+* Enables `podman.socket` for Docker API compatibility (on systemd hosts)
+
+The install script uses **`curl-minimal`** when present (UBI 9 and other minimal images ship this instead of the full `curl` package).
 
 The script writes `.stingar-runtime` in the quickstart directory.
 
