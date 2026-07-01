@@ -28,7 +28,17 @@ The STINGAR QuickStart script is available in Forewarned's public github reposit
   <div style="display:block;margin:.5em 0;">cd stingar</div>
 </div>
 
-The command above creates a directory named 'stingar' in the root directory of STINGAR_ADMIN_USER & pulls down all files needed to install STINGAR, saving them to this new 'stingar' directory.
+The command above creates a directory named 'stingar' in the home directory of STINGAR_ADMIN_USER.
+
+# Install container runtime
+
+From the `stingar` directory, install Docker (Ubuntu/Debian) or Podman (RHEL-family):
+
+```
+sudo ./scripts/install_prerequisites.sh
+```
+
+Log out and back in, then verify with [Verify Software Installation](../requirements/confirm.md).
 
 # Install Basic SSL
 
@@ -62,11 +72,9 @@ See more details <a>https://communityhoneynetwork.readthedocs.io/en/stable/certi
 
 # Run the QuickStart Script
 
-At this point you should have docker, docker-compose & python3 installed on this server and the QuickStart script (file: configure_stingar.py) downloaded to the current directory.
+You should have the container runtime and Python 3 installed (see [Install Required Software](../requirements/software.md)).
 
-You will need the password provided by the STINGAR team to retrieve STINGAR from the registry where the code resides. Contact the STINGAR team (<info@forewarned.io>) if you don't have a STINGAR Registry account or do not know your username/password for it.
-
-Now it's just a matter of running the script and responding to the prompts:
+Run the configuration script and respond to the prompts:
 
 ```
 python3 configure_stingar.py
@@ -86,8 +94,9 @@ python3 configure_stingar.py
 A sample script session is shown below (Input values for a default configuration appear in <span style="color:blue;">blue</span>.)
 <div style="border: solid 1px;border-radius 3px;background-color:#fffff0;padding:1em;">
 
-  <div class="quickStartOutput">Checking if docker is installed...</div>
-  <div class="quickStartOutput">Checking if docker-compose is installed...</div>
+  <div class="quickStartOutput">Container runtime: docker (OS family detection)</div>
+  <div class="quickStartOutput">Checking container tools...</div>
+  <div class="quickStartOutput">   docker compose: Docker Compose version v2.x</div>
 
   <span class="quickStartOutput">
     Enter the URL where your STINGAR web app will be available. The domain must be resolvable. E.g.: sub.domain.tld or localhost/stingar.
@@ -95,24 +104,6 @@ A sample script session is shown below (Input values for a default configuration
 
   <br>
   <span class="quickStartOutput">Please enter your SSL certificate path. [./certs]:</span><span class="userInput">[Return]</span>
-
-  <br>
-  <span class="quickStartOutput">Do you wish to specify an alternate Docker registry? (y/n): [y]</span><span class="userInput">[Return]</span>
-
-  <br>
-  <span class="quickStartOutput">Please enter the URL for the Docker registry: [stingarregistry.azurecr.io]</span><span class="userInput">[Return]</span>
-
-  <br>
-  <span class="quickStartOutput">Please enter your Docker registry username:</span><span class="userInput">STINGAR_REGISTRY_USER</span>
-
-  <br>
-  <span class="quickStartOutput">Please enter your Docker registry password:</span><span class="userInput">Enter the registry password that was provided to you by the STINGAR team</span> (Note: The password will not display.)
-
-  <br>
-  <div class="quickStartOutput">Testing registry authentication...</div>
-  <div class="quickStartOutput">WARNING! Using --password via the CLI is insecure. Use --password-stdin.</div>
-  <div class="quickStartOutput">Login Succeeded</div>
-  <div class="quickStartOutput" style="color:green;">Authentication to stingarregistry.azurecr.io succeeded.</div>
 
   <br>
   <span class="quickStartOutput">Do you wish to enable Syslog logging to a remote Syslog server? (y/n): [n] </span><span class="userInput">[Return]</span>
@@ -141,11 +132,11 @@ A sample script session is shown below (Input values for a default configuration
 
 # QuickStart Script Results
 
-Upon completion, the script should report that it has created three files:
+Upon completion, the script creates:
 
 - <span style="color:green;">stingar.env</span>
 - <span style="color:green;">nginx.conf</span>
 - <span style="color:green;">docker-compose.yml</span>
+- <span style="color:green;">.stingar-runtime</span>
 
-<h4></h4>
-These files define the way your instance of STINGAR appears & functions. They may be modified to add or change the behavior and appearance of your implementation of STINGAR. More detailed information about these files is available [here](../config_files.md).
+Proceed to [Launch STINGAR](launch.md).

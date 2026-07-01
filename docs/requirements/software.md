@@ -4,9 +4,9 @@
 
 <h5>Install Docker & Python</h5>
 
-You will need root access to the server that will host your STINGAR application. Once logged onto the server as the user with root access, download the software packages that STINGAR will need: docker, docker-compose & python3. The commands to download/install these depend upon your operating system.
+You will need root access to the server that will host your STINGAR application. The STINGAR quickstart repository installs the correct container runtime for your OS: **Docker** on Ubuntu/Debian, **Podman** on RHEL-family Linux.
 
-The three operating systems that can be used to host STINGAR are Ubuntu (preferred), RHEL/Centos and MacOS.  Click below on the button for the operating system of your STINGAR server for instructions to install on that platform.
+The supported admin-server operating systems are Ubuntu (preferred), RHEL/Rocky/AlmaLinux, and macOS (development). Click the button for your platform:
 
 <style>
 button {
@@ -27,14 +27,15 @@ a:visited, a:hover {
 }
 </style>
 
-<button style="margin-right: 1em;">[Click here if installing on Ubuntu](../requirements/setup_ubuntu.md)</button> (preferred)
+<button style="margin-right: 1em;">[Ubuntu / Debian](../requirements/setup_ubuntu.md)</button> (preferred)
 
 
-<button>[Click here if installing on RHEL/Centos](../requirements/setup_centos.md)</button>
+<button style="margin-right: 1em;">[RHEL / Rocky / AlmaLinux](../requirements/setup_rhel.md)</button>
 
 
-<button>[Click here if installing on ORACLE](../requirements/setup_oracle.md)</button>
+<button>[Mac (development)](../requirements/setup_macos.md)</button>
 
+<p style="margin-top:1em;">Legacy CentOS page: <a href="../requirements/setup_centos.md">setup_centos.md</a> (redirects to RHEL guide).</p>
 
-<button>[Click here if installing on a Mac](../requirements/setup_macos.md)</button >
+<p>See also: <a href="../requirements/container_runtime.md">Container runtime (Docker vs Podman)</a>.</p>
 

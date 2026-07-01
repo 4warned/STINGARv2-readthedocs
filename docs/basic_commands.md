@@ -1,33 +1,31 @@
-Basic Docker & Docker Compose Commands
+Basic Container Commands
 ===============
 
-Please refer to Docker documentation for comprehensive information about [Docker](https://docs.docker.com/get-started/) & [docker-compose.](https://docs.docker.com/compose/).
+Use `./scripts/compose.sh` from your quickstart directory — it runs **`docker compose`** on Ubuntu/Debian or **`podman compose`** on RHEL-family hosts.
 
-####Start STINGAR
-```
-docker-compose up -d
-```
+See [Container Runtime](requirements/container_runtime.md) for the full matrix.
 
-
-####Verify STINGAR Containers Are Up & Running
+#### Start STINGAR
 ```
-docker-compose ps
+./scripts/compose.sh up -d
 ```
 
-
-####Stop STINGAR
+#### Verify STINGAR Containers Are Running
 ```
-docker-compose stop
-```
-
-
-####Monitor STINGAR Logs
-```
-docker-compose logs -f
+./scripts/compose.sh ps
 ```
 
+#### Stop STINGAR
+```
+./scripts/compose.sh stop
+```
 
-####Simulate Honeypot Events (for Testing)
+#### Monitor STINGAR Logs
+```
+./scripts/compose.sh logs -f
+```
+
+#### Simulate Honeypot Events (for Testing)
 ```
 ssh localhost -p 22
 ssh localhost -p 23
