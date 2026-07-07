@@ -6,7 +6,7 @@
 
 You will need root access to the server that will host your STINGAR application. The STINGAR quickstart repository installs the correct container runtime for your OS: **Docker** on Ubuntu/Debian, **Podman** on RHEL-family Linux.
 
-The supported admin-server operating systems are Ubuntu (preferred), RHEL/Rocky/AlmaLinux, and macOS (development). Click the button for your platform:
+The supported admin-server operating systems are Ubuntu **22.04, 24.04, and 26.04 LTS** (preferred), RHEL/Rocky/AlmaLinux, and macOS (development). Click the button for your platform:
 
 <style>
 button {

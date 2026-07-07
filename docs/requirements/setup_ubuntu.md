@@ -1,7 +1,7 @@
 STINGAR System - Ubuntu Installation
 ===============
 
-This page describes how to install software that STINGAR needs on Ubuntu or Debian. Ubuntu 22.04 or 24.04 LTS is recommended.
+This page describes how to install software that STINGAR needs on Ubuntu or Debian. Supported Ubuntu LTS releases: **22.04**, **24.04**, and **26.04**. Debian stable releases are also supported.
 
 # Recommended: quickstart install script
 

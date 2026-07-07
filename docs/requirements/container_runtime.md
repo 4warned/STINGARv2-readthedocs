@@ -5,10 +5,14 @@ STINGAR v2.4 selects the container runtime on your **admin server** based on ope
 
 | Host OS family | Example distributions | Runtime | Launch command |
 |----------------|----------------------|---------|----------------|
-| Debian | Ubuntu, Debian | Docker | `docker compose up -d` |
+| Debian | Ubuntu 22.04 / 24.04 / 26.04 LTS, Debian | Docker | `docker compose up -d` |
 | RedHat | RHEL 8/9, Rocky, AlmaLinux, Oracle Linux | Podman | `podman compose up -d` |
 
 The quickstart repository automates installation via `scripts/install_prerequisites.sh` and provides `scripts/compose.sh` to run the correct command on either platform.
+
+## Ubuntu LTS compatibility
+
+Supported Ubuntu LTS releases for the **admin server**: **22.04**, **24.04**, and **26.04**. The quickstart `install_prerequisites.sh` detects `ID=ubuntu` and configures the Docker CE repository for your release codename (including 26.04). On Ubuntu 26.04, where the default system Python may be 3.14, honeypot deployment from the UI uses Langstroth v2.4+ to bootstrap a compatible Python interpreter on remote honeypot hosts — see the [User Guide](https://stingarv2-user.readthedocs.io/en/latest/container_runtime.html).
 
 ## RHEL 8 and RHEL 9 compatibility (tested)
 
