@@ -2,15 +2,15 @@
 
 The <code><b>docker-compose.yml</b></code> contains the docker container configuration details for the STINGARv2 system.
 
-This is the <code>docker-compose.yml</code> file for the most recent STINGARv2.4 version of the system :
+This is the <code>docker-compose.yml</code> file for the STINGARv2 system. The images use the <code>:latest</code> tag; pin a specific release (e.g. <code>:v2.4.5</code>) if you need a fixed version :
 
 ```
 services:
   docs:
-    image: 4warned/stingar-user-docs:v2.4
+    image: 4warned/stingar-user-docs:latest
   elasticsearch:
     user: "1000"
-    image: 4warned/elasticsearch:v2.4
+    image: 4warned/elasticsearch:latest
     healthcheck:
       test: [ "CMD-SHELL", "curl -s http://localhost:9200/_cluster/health?wait_for_status=yellow || exit 1"]
       interval: 10s
@@ -36,7 +36,7 @@ services:
   
   kibana:
     user: "1000"
-    image: 4warned/kibana:v2.4
+    image: 4warned/kibana:latest
     ports:
       - "127.0.0.1:5601:5601"
     depends_on:
@@ -47,7 +47,7 @@ services:
     image: redis:7.0.4
 
   fluentd:
-    image: 4warned/fluentd:v2.4
+    image: 4warned/fluentd:latest
     ports:
       - "24224:24224"
       - "24224:24224/udp"
@@ -63,7 +63,7 @@ services:
       #- ./fluent.conf:/fluentd/etc/fluent.conf
       
   stingarapi:
-    image: 4warned/stingar-api:v2.4
+    image: 4warned/stingar-api:latest
     env_file:
       - stingar.env
     volumes:
@@ -76,7 +76,7 @@ services:
         condition: service_healthy
 
   stingarui:
-    image: 4warned/stingar-ui:v2.4 
+    image: 4warned/stingar-ui:latest
     env_file:
       - ./stingar.env
     environment:
@@ -100,7 +100,7 @@ services:
     restart: on-failure
 
   langstroth:
-    image: 4warned/langstroth:v2.4
+    image: 4warned/langstroth:latest
     env_file:
       - stingar.env
     depends_on:
